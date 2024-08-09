@@ -1,4 +1,6 @@
-<p><slot /></p>
+<p>
+  <slot />
+</p>
 
 <style>
   p {

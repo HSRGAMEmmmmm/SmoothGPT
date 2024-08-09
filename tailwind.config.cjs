@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#282c34', 
-        secondary: '#21252b', 
+        primary: '#fff', 
+        secondary: '#F9F9F9', 
         warningHover: '#e56865',
         warning: '#c23e45',
         good3: '#96c561',
@@ -14,6 +14,11 @@ module.exports = {
         hover: '#2b3038',
         hover2: '#333943',
         chat: '#454c5a',
+        themegreen:"#4A928C",
+        themegrey:"#505860",
+        themegreylight:"#ABABAB",
+        themegreyhover:"#EBEDED"
+
       },
             opacity: {
         'hover': '.2',

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+  <g id="copy" transform="translate(-0.343 0.216)">
+    <g id="组_2782" data-name="组 2782" transform="translate(1.843 -0.216)">
+      <path id="Rectangle_2775" data-name="Rectangle 2775" d="M2,1A1,1,0,0,0,1,2v8a1,1,0,0,0,1,1H7a1,1,0,0,0,1-1V2A1,1,0,0,0,7,1H2M2,0H7A2,2,0,0,1,9,2v8a2,2,0,0,1-2,2H2a2,2,0,0,1-2-2V2A2,2,0,0,1,2,0Z" transform="translate(2)" fill="#4a928c"/>
+      <path id="Path_3501" data-name="Path 3501" d="M460.138,1042.1l-5.5,0a1.848,1.848,0,0,1-1.75-1.863v-9a.5.5,0,0,1,1,0v9a.752.752,0,0,0,.393.72,1.281,1.281,0,0,0,.426.145h5.432a.5.5,0,1,1,0,1Z" transform="translate(-452.887 -1028.102)" fill="#4a928c"/>
+    </g>
+    <rect id="矩形_2775" data-name="矩形 2775" width="14" height="14" transform="translate(0.343 -0.216)" fill="none"/>
+  </g>
+</svg>

@@ -1,5 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  .height-manager {
+.height-manager {
   height: calc(var(--app-height) * 100);
 }
 
@@ -114,4 +117,35 @@ filter: none;
 .message p {
 padding-bottom: 0.5rem;
 
+}
+
+/* topbar style */
+.topbar{
+  position: relative;
+}
+.topbar::after{
+  content: "";
+    position: absolute;
+    top:100%;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0) 100%);
+    z-index: 1;
+}
+
+.btn-custom {
+  @apply flex text-[14px] py-1 px-2 bg-secondary h-[32px] rounded items-center gap-1 hover:bg-themegreyhover;
+}
+
+.icon-small{
+  @apply h-3 w-3;
+}
+
+.btn-text{
+  @apply text-themegreen;
+}
+
+@media (max-width: 768px) {
+  .btn-text{display:none;}
 }

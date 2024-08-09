@@ -13,9 +13,11 @@ export interface DefaultAssistantRole {
   type: string;
 }
 
-export const settingsVisible = writable(false)
-export const helpVisible = writable(false)
-export const menuVisible = writable(false)
+// 面板可见性
+export const settingsVisible = writable(false);
+export const helpVisible = writable(false);
+export const menuVisible = writable(false);
+export const sidebarVisible = writable(false); //ADD: sidebar可见性 
 
 let storedApiKey = localStorage.getItem("api_key")
 let parsedApiKey = storedApiKey !== null ? JSON.parse(storedApiKey) : null;
