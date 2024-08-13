@@ -26,6 +26,7 @@
   import WaitIcon from "./assets/stop.svg";
   import UploadIcon from "./assets/upload-icon.svg";
   import PDFIcon from "./assets/sendpdf-default.svg";
+  import GPTIcom from "./assets/gpt.svg";
   import { afterUpdate } from "svelte";
   import { processPDF } from "./managers/pdfManager";
   import {
@@ -192,7 +193,7 @@
     routeMessage(input, convId, pdfOutput);
     input = "";
     clearFiles();
-    textAreaElement.style.height = "96px"; // Reset the height after sending
+    textAreaElement.style.height = "6rem"; // Reset the height after sending
   }
   function scrollChat() {
     if (chatContainer) chatContainer.scrollTop = chatContainer.scrollHeight;
@@ -266,9 +267,9 @@
 
 <title>
   {#if $conversations.length > 0 && $conversations[$chosenConversationId]}
-    {$conversations[$chosenConversationId].title || "SmoothGPT"}
+    {$conversations[$chosenConversationId].title ||"AI Answer"}
   {:else}
-    SmoothGPT
+    AI Answer
   {/if}
 </title>
 {#if $settingsVisible}
@@ -306,15 +307,15 @@
                 <div
                   class="message relative inline-block bg-primary px-2 pb-5 flex flex-col"
                 >
-                  <div class="profile-picture flex">
+                  <div class="profile-picture flex align-middle">
                     <div>
                       <img
                         src={message.role === "user" ? UserIcon : RobotIcon}
                         alt="Profile"
-                        class="w-4 h-4"
+                        class="w-[1.5rem] h-[1.5rem]"
                       />
                     </div>
-                    <div class="relative ml-2 font-bold text-[0.75rem]">
+                    <div class="relative ml-2 font-bold">
                       {#if message.role === "assistant"}
                         AI Answer
                       {:else}
@@ -329,7 +330,7 @@
                       class="message-edit-textarea mt-2 bg-gray-700 p-3 mx-10 resize-none focus:outline-none rounded-lg"
                       bind:value={editingMessageContent}
                       on:input={autoExpand}
-                      style="height: 96px; overflow-y: auto;"
+                      style="height: 4rem; overflow-y: auto;"
                     ></textarea>
                     <div class="flex place-content-center mt-4">
                       <button
@@ -347,7 +348,7 @@
                     </div>
                   {:else}
                     <div
-                      class="message-display  md:px-5 text-[0.8rem]"
+                      class="message-display pr-5 mt-2"
                     >
                       {#if isImageUrl(message.content)}
                         <img
@@ -449,7 +450,7 @@
     </div>
 
     <div class="inputbox-container w-full flex justify-center items-center bg-primary">
-      <div class="inputbox flex flex-1 bg-primary mt-auto mx-auto max-w-3xl mb-3">
+      <div class="inputbox flex flex-1 bg-primary mt-auto mx-auto max-w-3xl mb-3 relative">
         <!-- {#if isVisionMode}
           <input type="file" id="imageUpload"  multiple accept="image/*"
             on:change={handleImageUpload}
@@ -494,11 +495,11 @@
 
         <textarea
           bind:this={textAreaElement}
-          class="w-full min-h-[96px] h-24 rounded-lg p-2 mx-1 border-2 border-themegreyborder resize-none focus:outline-2 shadow-xl"
-          placeholder="Type your message..."
+          class="w-full min-h-[6rem] h-24 rounded-lg p-2 pb-10 mx-1 border-2 border-themegreyborder resize-none focus:outline-2 focus:outline-themegreen shadow-xl"
+          placeholder="Enter your question for AI here, Enter to send, and Shift + Enter to line break"
           bind:value={input}
           on:input={autoExpand}
-          style="height: 96px; overflow-y: auto; overflow:visible !important;"
+          style="height: 6rem; overflow-y: auto; overflow:visible !important;"
           on:keydown={(event) => {
             const isMobile =
               /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -520,6 +521,16 @@
             }
           }}
         ></textarea>
+        <div class="w-full absolute textarea-btn-set">
+          <div class="btn">
+            <select bind:value={$selectedMode} class="btn-custom text-themegreen focus:outline-themegreen border-1 border-themegreen" id="mode-selection">
+              <option value="GPT">GPT</option>
+              <option value="GPT + Vision">GPT + Vision</option>
+              <option value="Dall-E">Dall-E</option>
+              <option value="TTS">TTS</option>
+            </select>
+          </div>
+        </div>
         <!-- <button class="bg-themegrey rounded py-2 px-4 mx-1 ml-0 border-t-2 border-b-2 border-r-2 border-gray-500 rounded-l-none cursor-pointer"
           on:click={() => {
             if ($isStreaming) {

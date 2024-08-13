@@ -127,3 +127,20 @@ padding-bottom: 0.5rem;
 @media (max-width: 768px) {
   .btn-text{display:none;}
 }
+
+.textarea-btn-set{
+  bottom: 0.5rem;
+  left: 0.75rem
+}
+
+.message-display h1,
+.message-display h2,
+.message-display h3,
+.message-display h4,
+.message-display h5,
+.message-display h6{
+  底色
+  ::after{
+    content: attr();
+  }
+}
