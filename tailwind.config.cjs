@@ -17,7 +17,8 @@ module.exports = {
         themegreen:"#4A928C",
         themegrey:"#505860",
         themegreylight:"#ABABAB",
-        themegreyhover:"#EBEDED"
+        themegreyhover:"#EBEDED",
+        themegreyborder:"#EBEDED"
 
       },
             opacity: {

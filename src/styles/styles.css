@@ -53,48 +53,26 @@
     /* Ensure your button is appropriately sized for your icon */
   }
 
-  .upload-icon {
-    width: 36px; /* Adjust based on your icon's size */
-    height: auto; }
-
-    .fileCount {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px; /* Diameter of the circle */
-      height: 40px; /* Diameter of the circle */
-      border: 2px solid white; /* Border color and width of the circle */
-      border-radius: 50%; /* Makes the element a circle */
-      background-color: transparent; /* Transparent background */
-      color: white; /* Text color */
-      font-size: 16px; /* Adjust based on your design */
-    }
-
-    .pdf-icon {
-      width: 36px; /* Adjust based on your icon's size */
-      height: auto; }
 
 
-    .copy-icon {
-      filter: invert(60%);    
-      }
-    .copy-icon:hover {
-filter: invert(100%);    
+.fileCount {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Diameter of the circle */
+  height: 40px; /* Diameter of the circle */
+  border: 2px solid white; /* Border color and width of the circle */
+  border-radius: 50%; /* Makes the element a circle */
+  background-color: transparent; /* Transparent background */
+  color: white; /* Text color */
+  font-size: 16px; /* Adjust based on your design */
 }
-.delete-icon {
-  filter: grayscale(100%) invert(75%);    
 
-}
-.delete-icon:hover {
-filter: none;    
-}
-.edit-icon {
-  filter: grayscale(100%) invert(75%);    
+.pdf-icon {
+  width: 36px; /* Adjust based on your icon's size */
+  height: auto; }
 
-}
-.edit-icon:hover {
-  filter: grayscale(100%) invert(100%);    
-}
+
 
 .inputbox-container {
   /* Ensures the container takes up full available width */
@@ -135,7 +113,7 @@ padding-bottom: 0.5rem;
 }
 
 .btn-custom {
-  @apply flex text-[14px] py-1 px-2 bg-secondary h-[32px] rounded items-center gap-1 hover:bg-themegreyhover;
+  @apply flex text-[14px] py-1 px-2 bg-secondary h-[1.5rem] rounded items-center gap-1 hover:bg-themegreyhover;
 }
 
 .icon-small{

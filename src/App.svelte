@@ -17,6 +17,7 @@
   import HtmlRenderer from "./renderers/Html.svelte";
   import DeleteIcon from "./assets/delete.svg";
   import CopyIcon from "./assets/copy.svg";
+  import RetryIcon from "./assets/retry.svg";
   import UserIcon from "./assets/UserIcon.svg";
   import RobotIcon from "./assets/aianswer-avtar.svg";
   import MoreIcon from "./assets/moreactions.svg";
@@ -310,12 +311,12 @@
                       <img
                         src={message.role === "user" ? UserIcon : RobotIcon}
                         alt="Profile"
-                        class="w-6 h-6 ml-10"
+                        class="w-4 h-4"
                       />
                     </div>
-                    <div class="relative ml-3 font-bold">
+                    <div class="relative ml-2 font-bold text-[0.75rem]">
                       {#if message.role === "assistant"}
-                        ChatGPT
+                        AI Answer
                       {:else}
                         You
                       {/if}
@@ -346,7 +347,7 @@
                     </div>
                   {:else}
                     <div
-                      class="message-display pl-20 pr-5 md:px-20 text-[1rem]"
+                      class="message-display  md:px-5 text-[0.8rem]"
                     >
                       {#if isImageUrl(message.content)}
                         <img
@@ -393,19 +394,28 @@
                         />
                       {/if}
                     </div>
-                    <div class="toolbelt flex space-x-2 pl-20 mb-2 tools">
+                    <div class="toolbelt flex space-x-2 mb-2 tools">
                       {#if message.role === "assistant"}
                         {#if !isAudioMessage(message) && !isImageUrl(message.content)}
                           <button
-                            class="copyButton w-5"
+                            class="copyButton btn-custom"
                             on:click={() =>
                               copyTextToClipboard(message.content)}
                           >
                             <img class="copy-icon" alt="Copy" src={CopyIcon} />
+                            <span class="btn-text">Copy</span>
+                          </button>
+                          <button
+                            class="copyButton btn-custom"
+                            on:click={() =>
+                              copyTextToClipboard(message.content)}
+                          >
+                            <img class="" alt="Retry" src={RetryIcon} />
+                            <span class="btn-text">Retry</span>
                           </button>
                         {/if}
                         <button
-                          class="deleteButton w-5"
+                          class="deleteButton btn-custom"
                           on:click={() => deleteMessageFromConversation(i)}
                         >
                           <img
@@ -413,6 +423,7 @@
                             alt="Delete"
                             src={DeleteIcon}
                           />
+                          <span class="btn-text">Delete</span>
                         </button>
                       {/if}
                       {#if message.role === "user"}
@@ -439,7 +450,7 @@
 
     <div class="inputbox-container w-full flex justify-center items-center bg-primary">
       <div class="inputbox flex flex-1 bg-primary mt-auto mx-auto max-w-3xl mb-3">
-        {#if isVisionMode}
+        <!-- {#if isVisionMode}
           <input type="file" id="imageUpload"  multiple accept="image/*"
             on:change={handleImageUpload}
             bind:this={fileInputElement}
@@ -479,11 +490,11 @@
               X
             </button>
           {/if}
-        {/if}
+        {/if} -->
 
         <textarea
           bind:this={textAreaElement}
-          class="w-full min-h-[96px] h-24 rounded-lg p-2 mx-1 mr-0 border-t-2 border-b-2 border-l-2 rounded-r-none bg-primary border-gray-500 resize-none focus:outline-none"
+          class="w-full min-h-[96px] h-24 rounded-lg p-2 mx-1 border-2 border-themegreyborder resize-none focus:outline-2 shadow-xl"
           placeholder="Type your message..."
           bind:value={input}
           on:input={autoExpand}
@@ -509,7 +520,7 @@
             }
           }}
         ></textarea>
-        <button class="bg-themegrey rounded py-2 px-4 mx-1 ml-0 border-t-2 border-b-2 border-r-2 border-gray-500 rounded-l-none cursor-pointer"
+        <!-- <button class="bg-themegrey rounded py-2 px-4 mx-1 ml-0 border-t-2 border-b-2 border-r-2 border-gray-500 rounded-l-none cursor-pointer"
           on:click={() => {
             if ($isStreaming) {
               closeStream();
@@ -532,7 +543,7 @@
               src={SendIcon}
             />
           {/if}
-        </button>
+        </button> -->
       </div>
     </div>
 
@@ -544,7 +555,7 @@
         <div class="font-normal text-sm border-green-800 border-2 text-gray-200 px-5 py-3 rounded-full mb-3">
           Enjoying SmoothGPT? Contribute to hosting costs & check out my creative work: <span class="underline font-bold">ko-fi.com/loreteller</span>
         </div>
-      </a>
+      </a> 
     </div>
   </div>
   -->
