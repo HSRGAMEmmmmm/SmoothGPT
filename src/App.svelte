@@ -3,7 +3,7 @@
   import { initApp, cleanupApp } from "./appInit";
   import AudioPlayer from "./lib/AudioPlayer.svelte";
   import Topbar from "./lib/Topbar.svelte";
-  import Sidebar from "./lib/Sidebar.svelte";
+  //import Sidebar from "./lib/Sidebar.svelte";
   import Settings from "./lib/Settings.svelte";
   import Help from "./lib/Help.svelte";
   import SvelteMarkdown from "svelte-markdown";
@@ -496,7 +496,7 @@
         <textarea
           bind:this={textAreaElement}
           class="w-full min-h-[6rem] h-24 rounded-lg p-2 pb-10 mx-1 border-2 border-themegreyborder resize-none focus:outline-2 focus:outline-themegreen shadow-xl"
-          placeholder="Enter your question for AI here, Enter to send, and Shift + Enter to line break"
+          placeholder="Enter your question for AI here, Enter to send, and Shift + Enter to line break" autofocus 
           bind:value={input}
           on:input={autoExpand}
           style="height: 6rem; overflow-y: auto; overflow:visible !important;"
@@ -521,7 +521,7 @@
             }
           }}
         ></textarea>
-        <div class="w-full absolute textarea-btn-set">
+        <div class="w-full absolute textarea-btn-set flex justify-between">
           <div class="btn">
             <select bind:value={$selectedMode} class="btn-custom text-themegreen focus:outline-themegreen border-1 border-themegreen" id="mode-selection">
               <option value="GPT">GPT</option>
@@ -529,6 +529,49 @@
               <option value="Dall-E">Dall-E</option>
               <option value="TTS">TTS</option>
             </select>
+          </div>
+          <div class="flex send-btn-set flex-end items-center mr-7">
+            {#if isVisionMode}
+              <input type="file" id="imageUpload"  multiple accept="image/*"
+                on:change={handleImageUpload}
+                bind:this={fileInputElement}
+                class="file-input"
+              />
+              <label for="imageUpload" class="file-label bg-primary rounded cursor-pointer hover:themegray transition-colors">
+                {#if uploadedFileCount > 0}
+                  <span class="fileCount">{uploadedFileCount}</span>
+                {:else}
+                  <img src={UploadIcon}  alt="Upload" class="upload-icon icon-white"/>
+                {/if}
+              </label>
+
+              {#if uploadedFileCount > 0}
+                <button on:click={clearFiles} class="clear-btn">X</button>
+            {/if}
+
+            {:else if isGPTMode}
+              <input type="file" id="pdfUpload" accept="application/pdf" 
+                on:change={(event) => uploadPDF(event)}
+                bind:this={pdfInputElement}
+                class="file-input"
+              />
+
+              <label for="pdfUpload" class="file-label bg-primary rounded cursor-pointer hover:themegray transition-colors">
+                {#if uploadedPDFCount === 0}
+                  <img src={PDFIcon} alt="PDF" class="pdf-icon icon-white" />
+                {:else}
+                  <span class="fileCount">{uploadedPDFCount}</span>
+                {/if}
+              </label>
+
+              {#if uploadedPDFCount > 0}
+                <button
+                  on:click={clearFiles}
+                  class="clear-btn px-4 rounded-lg bg-red-700 mx-2 hover:bg-red-500">
+                  X
+                </button>
+              {/if}
+            {/if}
           </div>
         </div>
         <!-- <button class="bg-themegrey rounded py-2 px-4 mx-1 ml-0 border-t-2 border-b-2 border-r-2 border-gray-500 rounded-l-none cursor-pointer"
@@ -557,19 +600,6 @@
         </button> -->
       </div>
     </div>
-
-    <!-- 需要隐藏的下方广告条 -->
-    <!-- 
-  <div class="flex justify-center bg-primary px-4">
-    <div class="max-w-3xl">
-      <a href="https://ko-fi.com/loreteller" rel="noreferrer" target="_blank" class="block">
-        <div class="font-normal text-sm border-green-800 border-2 text-gray-200 px-5 py-3 rounded-full mb-3">
-          Enjoying SmoothGPT? Contribute to hosting costs & check out my creative work: <span class="underline font-bold">ko-fi.com/loreteller</span>
-        </div>
-      </a> 
-    </div>
-  </div>
-  -->
   </div>
 </main>
 
